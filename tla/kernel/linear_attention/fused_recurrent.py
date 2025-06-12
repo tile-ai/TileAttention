@@ -170,7 +170,7 @@ class _fused_recurrent_linear_attention(torch.autograd.Function):
 fused_recurrent_linear_attention = _fused_recurrent_linear_attention.apply
 
 
-class LinearAttentionFusedChunkKernel(nn.Module):
+class LinearAttentionFusedRecurrentKernel(nn.Module):
 
     def __init__(self,
                  batch_size,
@@ -252,6 +252,6 @@ class LinearAttentionFusedChunkKernel(nn.Module):
 
 
 if __name__ == '__main__':
-    kernel = LinearAttentionFusedChunkKernel(8, 1024, 32, 256)
+    kernel = LinearAttentionFusedRecurrentKernel(8, 1024, 32, 256)
     kernel.check()
     kernel.profile()
